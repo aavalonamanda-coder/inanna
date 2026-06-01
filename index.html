@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inanna, Rainha do Céu e da Terra — Amanda Avalon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --prata:#d4c9a8;--prata-claro:#e8dfc0;--prata-escuro:#a89870;
+      --azul:#0A1A3A;--azul-medio:#112244;--azul-claro:#1a3366;
+      --roxo:#6B0F1A;--roxo-claro:#9B2030;--vinho:#6B0F1A;--vinho-claro:#9B2030;
+      --dourado:#B8860B;--dourado-claro:#D4A017;
+      --bege:#eee7df;--bege-claro:#f5f0e8;--preto:#2b2c29;
+      --fn-heavy:'Inter',sans-serif;--fn-serif:'DM Serif Display',Georgia,serif;
+    }
+    html,body{max-width:100%;overflow-x:hidden;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bege-claro);color:var(--preto);font-family:var(--fn-heavy);line-height:1.7;overflow-x:hidden;}
+    a{text-decoration:none;color:inherit;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;transition:all .25s ease;white-space:nowrap;}
+    .btn-grad{background:linear-gradient(135deg,var(--azul),var(--roxo-claro));color:#fff;}
+    .btn-grad:hover{transform:translateY(-2px);filter:brightness(1.12);}
+    .barra{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:999;background:var(--azul);border-radius:100px;padding:10px 14px;display:flex;align-items:center;justify-content:center;gap:20px;box-shadow:0 8px 40px rgba(0,0,0,.55);border:1px solid rgba(212,201,168,.1);white-space:nowrap;}
+    .hero{background:var(--preto);min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:80px 6vw 100px;gap:44px;position:relative;overflow:hidden;}
+    .hero-grade{position:absolute;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(var(--prata) 1px,transparent 1px),linear-gradient(90deg,var(--prata) 1px,transparent 1px);background-size:72px 72px;}
+    .glow1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,26,58,.7) 0%,transparent 70%);top:-120px;right:-80px;pointer-events:none;}
+    .glow2{position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(107,15,26,.45) 0%,transparent 70%);bottom:-40px;left:-80px;pointer-events:none;}
+    .hero-c{position:relative;z-index:2;}
+    .hero-h1{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.2rem,3.2vw,3rem);letter-spacing:-.02em;line-height:1.12;color:var(--prata);margin-bottom:20px;-webkit-font-smoothing:antialiased;max-width:680px;}
+    .hero-h2{font-family:var(--fn-heavy);font-weight:300;font-size:clamp(1.05rem,1.45vw,1.3rem);color:rgba(212,201,168,.55);line-height:1.55;max-width:580px;}
+    .ticket{position:relative;z-index:2;display:flex;flex-direction:row;background:var(--bege);border-radius:14px;overflow:hidden;max-width:520px;box-shadow:0 12px 40px rgba(0,0,0,.45);transition:transform .25s ease,box-shadow .25s ease;cursor:pointer;}
+    .ticket:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.55);}
+    .ticket-img{width:130px;flex-shrink:0;overflow:hidden;position:relative;}
+    .ticket-img-bg{width:100%;height:100%;background:linear-gradient(160deg,#0A1A3A 0%,#6B0F1A 100%);display:flex;align-items:center;justify-content:center;font-family:var(--fn-serif);font-style:italic;font-size:.75rem;color:rgba(212,201,168,.4);text-align:center;padding:12px;line-height:1.5;min-height:160px;}
+    .ticket-vsep{width:1px;background:rgba(43,44,41,.1);position:relative;flex-shrink:0;}
+    .ticket-vsep::before,.ticket-vsep::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:var(--preto);left:50%;transform:translateX(-50%);}
+    .ticket-vsep::before{top:-8px;}
+    .ticket-vsep::after{bottom:-8px;}
+    .ticket-body{padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;flex:1;min-width:0;}
+    .ticket-escola{font-family:var(--fn-heavy);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(43,44,41,.38);margin-bottom:4px;}
+    .ticket-nome{font-family:var(--fn-heavy);font-weight:900;font-size:.88rem;line-height:1.2;color:var(--preto);margin-bottom:10px;}
+    .ticket-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+    .ticket-tag{font-family:var(--fn-heavy);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dourado);border:1px solid rgba(184,134,11,.3);padding:3px 8px;border-radius:100px;}
+    .ticket-preco{display:flex;flex-direction:column;gap:2px;padding-top:10px;border-top:1px dashed rgba(43,44,41,.12);}
+    .ticket-de{font-family:var(--fn-heavy);font-size:.6rem;color:rgba(43,44,41,.38);text-decoration:line-through;}
+    .ticket-val{font-family:var(--fn-heavy);font-weight:900;font-size:.92rem;color:var(--preto);}
+    .ticket-parc{font-family:var(--fn-heavy);font-size:.58rem;color:rgba(43,44,41,.4);}
+    .ticket-barcode{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 14px;border-left:1px solid rgba(43,44,41,.08);flex-shrink:0;gap:6px;}
+    .ticket-barcode svg{opacity:.25;}
+    .difs{background:var(--bege-claro);padding:50px 6vw 28px;text-align:center;}
+    .difs-cards{display:flex;gap:16px;flex-wrap:nowrap;justify-content:center;}
+    .dif{background:linear-gradient(135deg,var(--azul),var(--roxo-claro));color:#fff;font-family:var(--fn-heavy);font-size:1rem;font-weight:700;padding:20px 28px;border-radius:20px;flex:1;min-width:0;text-align:center;line-height:1.4;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .difs-divisor{margin-top:56px;display:flex;align-items:center;justify-content:center;}
+    .difs-linha{flex:1;height:1px;background:rgba(43,44,41,.1);}
+    .difs-estrela-centro{font-size:1.2rem;color:var(--dourado);padding:0 16px;opacity:.5;}
+    .ps{background:var(--bege-claro);padding:36px 10vw 60px;}
+    .ps-duas-caixas{display:flex;flex-direction:row;align-items:stretch;gap:0;}
+    .ps-caixa-bloco{border-radius:20px;padding:36px 32px;flex:1;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;}
+    .ps-lado-esq{background:linear-gradient(135deg,#0A1A3A 0%,#112244 100%);}
+    .ps-lado-dir{background:linear-gradient(135deg,#112244 0%,#1a3366 100%);}
+    .ps-seta{width:48px;height:48px;flex-shrink:0;align-self:center;background:var(--bege-claro);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:rgba(43,44,41,.5);margin:0 -24px;position:relative;z-index:2;border:3px solid var(--bege-claro);box-shadow:0 0 0 2px rgba(43,44,41,.1);}
+    .ps-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:8px;width:fit-content;}
+    .ps-tag.problema{color:var(--prata);border:1px solid rgba(212,201,168,.3);}
+    .ps-tag.solucao{color:#7eca9c;border:1px solid rgba(126,202,156,.3);}
+    .s-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:18px;}
+    .s-pill.roxo{color:var(--dourado);border:1px solid rgba(184,134,11,.3);}
+    .s-pill.prata{color:var(--prata-escuro);border:1px solid rgba(212,201,168,.3);}
+    .conteudo-titulo{font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--preto);line-height:1.1;}
+    .cc{background:var(--preto);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;aspect-ratio:5/7;width:100%;}
+    .cc-visual{width:100%;flex:0 0 48%;position:relative;overflow:hidden;}
+    .cc-visual-bg{width:100%;height:100%;display:block;position:absolute;top:0;left:0;}
+    .cc-visual::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:24px;background:var(--preto);-webkit-mask:radial-gradient(circle at 12px 0,transparent 10px,#000 10px) repeat-x;mask:radial-gradient(circle at 12px 0,transparent 10px,#000 10px) repeat-x;-webkit-mask-size:24px 100%;mask-size:24px 100%;}
+    .cc-corpo{padding:16px 20px 0;flex:1;display:flex;flex-direction:column;overflow:hidden;}
+    .cc-titulo{font-family:var(--fn-heavy);font-weight:700;font-size:.92rem;color:var(--prata);margin-bottom:6px;line-height:1.2;}
+    .cc-desc{font-family:var(--fn-heavy);font-weight:400;font-size:.75rem;color:rgba(212,201,168,.5);line-height:1.5;flex:1;overflow:hidden;}
+    .cc-badge-wrap{padding:10px 20px 14px;}
+    .cc-badge{display:inline-block;background:rgba(184,134,11,.12);border:1px solid rgba(184,134,11,.3);color:var(--dourado);font-family:var(--fn-heavy);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+    .mods{display:grid;grid-template-columns:1fr;gap:12px;}
+    .mod{background:var(--preto);border-radius:20px;overflow:hidden;display:flex;flex-direction:row;align-items:stretch;}
+    .mod-capa{width:120px;min-width:120px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .mod-circulo{width:56px;height:56px;border:1px solid rgba(212,201,168,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(212,201,168,.3);}
+    .mod-b{padding:20px 24px;flex:1;min-width:0;}
+    .mod-num{font-family:var(--fn-heavy);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--prata-escuro);margin-bottom:6px;}
+    .mod-h{font-family:var(--fn-heavy);font-weight:700;font-size:1rem;color:var(--prata);margin-bottom:6px;line-height:1.2;}
+    .mod-p{font-family:var(--fn-heavy);font-weight:400;font-size:.78rem;color:rgba(212,201,168,.48);line-height:1.45;margin-bottom:12px;}
+    .mod-badge{display:inline-block;background:rgba(184,134,11,.1);border:1px solid rgba(184,134,11,.25);color:var(--dourado);font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+    .pratica{background:linear-gradient(180deg,#0A1A3A 0%,#112244 100%);position:relative;overflow:hidden;}
+    .pratica-topo{padding:60px 6vw 40px;text-align:center;position:relative;z-index:2;}
+    .pratica-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;padding:6px 16px;border-radius:100px;color:var(--prata-escuro);border:1px solid rgba(212,201,168,.2);margin-bottom:16px;}
+    .pratica-titulo{font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--prata);line-height:1.1;}
+    .pratica-grade{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:2;border:1px solid rgba(212,201,168,.18);border-radius:16px;overflow:hidden;}
+    .pratica-item{background:rgba(212,201,168,.04);border:1px solid rgba(212,201,168,.18);padding:40px 44px;transition:background .3s ease;margin:-1px;}
+    .pratica-item:hover{background:rgba(212,201,168,.08);}
+    .pratica-num{font-family:var(--fn-heavy);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--prata-escuro);margin-bottom:16px;display:block;}
+    .pratica-item-titulo{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--prata);line-height:1.15;letter-spacing:-.01em;margin-bottom:16px;}
+    .pratica-item-titulo span{color:var(--dourado-claro);}
+    .pratica-item-desc{font-family:var(--fn-heavy);font-weight:400;font-size:15px;color:rgba(212,201,168,.55);line-height:1.65;}
+    .pq-tag-item{background:rgba(212,201,168,.07);border:1px solid rgba(212,201,168,.2);border-radius:100px;padding:12px 22px;font-family:var(--fn-heavy);font-weight:600;font-size:.88rem;color:var(--prata);white-space:nowrap;}
+    .pq-frases{text-align:left;margin:0 0 48px;max-width:55%;}
+    .pq-menos{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.2;letter-spacing:-.02em;margin-bottom:10px;}
+    .pq-mais{font-family:var(--fn-heavy);font-weight:900;font-size:clamp(1.4rem,2.2vw,2rem);color:var(--dourado-claro);line-height:1.2;letter-spacing:-.02em;margin-bottom:14px;}
+    .pq-sub{font-family:var(--fn-heavy);font-weight:300;font-size:clamp(1.1rem,1.5vw,1.3rem);color:rgba(212,201,168,.7);line-height:1.5;}
+    .pq-tags-wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start;margin-bottom:48px;max-width:80%;}
+    #dep-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;}
+    #dep-scroll::-webkit-scrollbar{display:none;}
+    .faq2-item{border-radius:12px;overflow:hidden;background:#fff;border:1px solid rgba(43,44,41,.07);margin-bottom:8px;}
+    .faq2-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:22px 24px;background:transparent;border:none;cursor:pointer;font-family:var(--fn-heavy);font-weight:500;font-size:.95rem;color:var(--preto);text-align:left;gap:16px;}
+    .faq2-btn:hover{background:rgba(43,44,41,.02);}
+    .faq2-seta{font-size:1rem;color:rgba(43,44,41,.3);transition:transform .3s;flex-shrink:0;}
+    .faq2-btn.open .faq2-seta{transform:rotate(180deg);}
+    .faq2-resp{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-family:var(--fn-heavy);font-weight:400;font-size:.88rem;color:rgba(43,44,41,.6);line-height:1.7;padding:0 24px;}
+    .faq2-btn.open + .faq2-resp{max-height:400px;padding:0 24px 24px;}
+    .conteudo-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
+    .ps-texto{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;line-height:1.4;color:rgba(212,201,168,.65);}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(max-width:900px){
+      .ps-duas-caixas{flex-direction:column;}
+      .ps-seta{margin:-24px auto;transform:rotate(90deg);}
+      .pratica-grade{grid-template-columns:1fr;}
+      .barra{width:calc(100% - 32px);}
+    }
+    @media(max-width:600px){
+      .hero-h1{font-size:clamp(1.8rem,6vw,2.4rem);}
+      .hero-h2{max-width:100%;font-size:1rem;}
+      .ticket{flex-direction:row !important;width:100% !important;max-width:100% !important;height:140px !important;min-height:140px !important;overflow:hidden !important;border-radius:14px !important;}
+      .ticket-img{width:110px !important;min-width:110px !important;max-width:110px !important;height:100% !important;flex-shrink:0 !important;overflow:hidden !important;}
+      .ticket-img img,.ticket-img-bg{width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;min-height:140px !important;}
+      .ticket-body{padding:10px 12px !important;flex:1 !important;min-width:0 !important;overflow:hidden !important;display:flex !important;flex-direction:column !important;justify-content:space-between !important;}
+      .ticket-escola{font-size:.44rem !important;}
+      .ticket-nome{font-size:.74rem !important;margin-bottom:4px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+      .ticket-tags{gap:2px !important;margin-bottom:4px !important;flex-wrap:wrap !important;}
+      .ticket-tag{font-size:.38rem !important;padding:1px 5px !important;}
+      .ticket-preco{padding-top:4px !important;}
+      .ticket-de{font-size:.48rem !important;}
+      .ticket-val{font-size:.72rem !important;}
+      .ticket-parc{font-size:.44rem !important;}
+      .ticket-barcode{padding:6px 8px !important;flex-shrink:0;}
+      .ticket-barcode svg{width:12px !important;}
+      .ticket-vsep::before,.ticket-vsep::after{width:12px !important;height:12px !important;}
+      .conteudo-section{padding:40px 12vw !important;}
+      .conteudo-cards{grid-template-columns:1fr !important;gap:20px !important;}
+      .cc{width:100% !important;max-width:100% !important;border-radius:16px !important;aspect-ratio:5/7 !important;}
+      .cc-visual{flex:0 0 48% !important;height:unset !important;aspect-ratio:unset !important;}
+      .cc-corpo{padding:16px 16px 0 !important;overflow:hidden !important;}
+      .cc-titulo{font-size:1rem !important;margin-bottom:6px !important;line-height:1.2 !important;}
+      .cc-desc{font-size:.82rem !important;line-height:1.5 !important;display:-webkit-box !important;-webkit-line-clamp:4 !important;-webkit-box-orient:vertical !important;overflow:hidden !important;}
+      .cc-badge-wrap{padding:8px 16px 14px !important;margin-top:auto;}
+      .ps-texto,.ps-texto span{font-family:'Inter',sans-serif !important;font-weight:700 !important;}
+      .ps-texto{font-size:16px !important;line-height:1.4 !important;}
+      .difs-cards{flex-direction:column;}
+      .pratica-grade{grid-template-columns:1fr 1fr;border-radius:12px;}
+      .pratica-item{padding:16px 12px !important;display:flex;flex-direction:column;gap:6px;}
+      .pratica-num{font-size:.48rem !important;margin-bottom:4px !important;}
+      .pratica-item-titulo{font-size:.82rem !important;line-height:1.2 !important;margin-bottom:6px !important;letter-spacing:-.01em !important;}
+      .pratica-item-desc{font-size:.7rem !important;line-height:1.5 !important;}
+      #dep-scroll > div{min-width:75vw !important;max-width:78vw !important;}
+      .pq-frases{max-width:100% !important;margin-bottom:32px !important;}
+      .pq-menos,.pq-mais{font-size:1.5rem !important;}
+      .pq-sub{font-size:1rem !important;}
+      .pq-tags-wrap{flex-direction:column !important;max-width:100% !important;gap:10px !important;}
+      .pq-tag-item{white-space:normal !important;border-radius:14px !important;padding:14px 18px !important;font-size:.92rem !important;}
+      .prova-metricas{gap:20px !important;justify-content:space-evenly !important;}
+      .prova-num{font-size:clamp(1.4rem,8vw,2rem) !important;}
+      .prova-lbl{font-size:.55rem !important;letter-spacing:.1em !important;}
+      .cert-grid{grid-template-columns:1fr !important;gap:32px !important;}
+      .fac-grid{grid-template-columns:1fr !important;gap:20px !important;}
+      .fac-foto{width:100% !important;height:280px !important;}
+      .faq-layout{grid-template-columns:1fr !important;}
+      .faq-card-contato{width:100% !important;aspect-ratio:auto !important;min-height:180px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BARRA FLUTUANTE -->
+<div class="barra">
+  <a class="btn btn-grad" href="https://pay.hotmart.com/U106014826K?checkoutMode=10" target="_blank">Garantir Ingresso</a>
+  <a style="display:inline-flex;align-items:center;gap:8px;font-family:var(--fn-heavy);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:100px;background:rgba(107,15,26,.35);border:1px solid rgba(155,32,48,.5);color:rgba(212,201,168,.85);text-decoration:none;white-space:nowrap;" href="https://pay.hotmart.com/L106085240Y" target="_blank">Quero só a gravação</a>
+</div>
+
+<!-- HEADER -->
+<header style="background:var(--preto);padding:14px 6vw;display:flex;align-items:center;border-bottom:1px solid rgba(212,201,168,.06);">
+  <span style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,201,168,.28);">Escola Travessias · Amanda Avalon</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grade"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="hero-c">
+    <h1 class="hero-h1">A Deusa que pariu as primeiras civilizações da história.</h1>
+    <p class="hero-h2">História, Arqueologia, Mitologia, Política e Feitiçaria Antiga, tudo em um só curso. Descubra como Inanna moldou os primeiros grandes impérios e como o Neopaganismo Assírio está resgatando os caminhos Queer.</p>
+  </div>
+  <a class="ticket" href="https://pay.hotmart.com/U106014826K?checkoutMode=10" target="_blank">
+    <div class="ticket-img">
+      <img src="capa-inanna.png" alt="Inanna, Rainha do Céu e da Terra" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="ticket-vsep"></div>
+    <div class="ticket-body">
+      <div>
+        <p class="ticket-escola">Escola Travessias · Amanda Avalon</p>
+        <p class="ticket-nome">Inanna, Rainha do Céu e da Terra — 27 & 28 de Junho</p>
+        <div class="ticket-tags">
+          <span class="ticket-tag">Ao Vivo</span>
+          <span class="ticket-tag">2 dias de aula</span>
+          <span class="ticket-tag">100% Online</span>
+          <span class="ticket-tag">E-Book + Gravação à Parte</span>
+        </div>
+      </div>
+      <div class="ticket-preco">
+        <span class="ticket-val">12x de R$ 10,80</span>
+      </div>
+    </div>
+    <div class="ticket-barcode">
+      <svg width="18" height="60" viewBox="0 0 18 60" fill="var(--preto)">
+        <rect x="0" y="0" width="2" height="60"/><rect x="4" y="0" width="1" height="60"/>
+        <rect x="7" y="0" width="3" height="60"/><rect x="12" y="0" width="1" height="60"/>
+        <rect x="15" y="0" width="2" height="60"/>
+      </svg>
+      <span style="font-family:var(--fn-heavy);font-weight:900;font-size:.5rem;letter-spacing:.1em;color:rgba(43,44,41,.5);text-transform:uppercase;writing-mode:vertical-rl;">INGRESSO</span>
+    </div>
+  </a>
+  <!-- ATENÇÃO -->
+  <div style="position:relative;z-index:2;background:rgba(184,134,11,.1);border:1px solid rgba(184,134,11,.3);border-radius:12px;padding:16px 24px;max-width:520px;">
+    <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dourado);margin-bottom:6px;">✦ Aulas ao vivo &amp; Acesso à gravação + E-Book à parte</p>
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.82rem;color:rgba(212,201,168,.7);line-height:1.6;">Para adquirir o curso COMPLETO, com as aulas ao vivo + acesso às gravações e o e-book do curso, não esqueça de selecionar essa opção durante sua compra!</p>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<div class="difs">
+  <div style="max-width:900px;margin:0 auto;">
+    <p style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.5rem,2.4vw,2.1rem);color:var(--preto);line-height:1.25;margin-bottom:48px;letter-spacing:-.02em;">você acha que conhece Inanna — pois ela foi inspiração para o "sagrado feminino" de muitas outras deusas — mas sua história original é pouco contada</p>
+    <div class="difs-cards">
+      <div class="dif">✦ história e arqueologia ✦</div>
+      <div class="dif">✦ mitos, símbolos e poder ✦</div>
+      <div class="dif">✦ fundamento para a devoção ✦</div>
+    </div>
+    <div class="difs-divisor"><div class="difs-linha"></div><span class="difs-estrela-centro">✦</span><div class="difs-linha"></div></div>
+  </div>
+</div>
+
+<!-- PROBLEMA / SOLUÇÃO -->
+<section class="ps">
+  <div class="ps-duas-caixas">
+    <div class="ps-caixa-bloco ps-lado-esq">
+      <span class="ps-tag problema">✦ Vocês pedem</span>
+      <p class="ps-texto">Inanna é uma das divindades mais mal interpretadas na bruxaria contemporânea. <span style="color:var(--prata-claro);">Virou moda falar dela para evocar o empoderamento feminino</span>, mas as imagens que circulam sequer são dela e <span style="color:var(--prata-claro);">poucos sabem explicar</span> as sociedades das quais ela veio e <span style="color:var(--prata-claro);">o que ela realmente representou</span> para cada uma delas.</p>
+    </div>
+    <div class="ps-seta">→</div>
+    <div class="ps-caixa-bloco ps-lado-dir">
+      <span class="ps-tag solucao" style="color:#c0354a;border-color:rgba(224,80,112,.3);">✦ A gente entrega</span>
+      <p class="ps-texto"><span style="color:#c0354a;">Em dois dias de aula você vai percorrer milênios de história</span> da antiga Mesopotâmia e vai conhecer melhor as culturas que clamaram por esta deusa em todos os seus nomes e faces. <span style="color:#c0354a;">Você sairá com fundamento histórico e prático para compreendê-la em camadas mais completas.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ VAI APRENDER -->
+<section class="conteudo-section" style="background:var(--bege-claro);padding:60px 6vw;">
+  <div style="text-align:center;margin-bottom:64px;">
+    <div class="s-pill roxo">✦ Conteúdo</div>
+    <h2 class="conteudo-titulo">O que você vai aprender</h2>
+  </div>
+  <div class="conteudo-cards">
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g1" cx="40%" cy="60%" r="70%"><stop offset="0%" stop-color="#0A1A3A"/><stop offset="60%" stop-color="#112244"/><stop offset="100%" stop-color="#2b2c29"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g1)"/>
+          <line x1="60" y1="134" x2="340" y2="134" stroke="rgba(212,201,168,.15)" stroke-width="1"/>
+          <circle cx="100" cy="134" r="5" stroke="rgba(212,201,168,.4)" stroke-width="1" fill="none"/>
+          <circle cx="175" cy="134" r="5" stroke="rgba(212,201,168,.4)" stroke-width="1" fill="none"/>
+          <circle cx="250" cy="134" r="5" stroke="rgba(212,201,168,.4)" stroke-width="1" fill="none"/>
+          <circle cx="325" cy="134" r="5" fill="rgba(212,201,168,.6)"/>
+          <line x1="100" y1="134" x2="100" y2="90" stroke="rgba(212,201,168,.18)" stroke-width="0.8"/>
+          <line x1="175" y1="134" x2="175" y2="100" stroke="rgba(212,201,168,.18)" stroke-width="0.8"/>
+          <line x1="250" y1="134" x2="250" y2="85" stroke="rgba(212,201,168,.18)" stroke-width="0.8"/>
+          <text x="100" y="82" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.3)">Suméria</text>
+          <text x="175" y="92" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.3)">Acádia</text>
+          <text x="250" y="77" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.3)">Babilônia</text>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.2)" letter-spacing="3">CONTEXTO · HISTÓRIA · POLÍTICA</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">O Mundo que criou Inanna</h3>
+        <p class="cc-desc">Para entender Inanna, você precisa entender a Mesopotâmia. Povos, cronologia, política e espiritualidade das primeiras civilizações do mundo.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ contexto</span></div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g2" cx="60%" cy="40%" r="70%"><stop offset="0%" stop-color="#6B0F1A"/><stop offset="60%" stop-color="#0A1A3A"/><stop offset="100%" stop-color="#2b2c29"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g2)"/>
+          <!-- estrela de 8 pontas -->
+          <polygon points="200,60 212,100 250,88 220,115 235,155 200,135 165,155 180,115 150,88 188,100" stroke="rgba(212,201,168,.2)" stroke-width="1" fill="none"/>
+          <circle cx="200" cy="134" r="28" stroke="rgba(184,134,11,.2)" stroke-width="1" fill="none"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.2)" letter-spacing="3">ARQUEOLOGIA · SÍMBOLOS · ARTEFATOS</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">Símbolos, Artefatos e Tecnologias Sagradas do Oriente Antigo</h3>
+        <p class="cc-desc">A Estrela de Oito Pontas, o leão, o lápis-lazúli, o ouro, templos, selos cilíndricos e a escrita cuneiforme que registraram toda a sua importância.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ arqueologia</span></div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g3" cx="50%" cy="50%" r="70%"><stop offset="0%" stop-color="#B8860B"/><stop offset="55%" stop-color="#6B0F1A"/><stop offset="100%" stop-color="#2b2c29"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g3)" opacity=".6"/>
+          <rect width="400" height="267" fill="#0A1A3A" opacity=".6"/>
+          <path d="M200,50 L200,217" stroke="rgba(212,201,168,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <ellipse cx="200" cy="110" rx="60" ry="40" stroke="rgba(212,201,168,.12)" stroke-width="1" fill="none"/>
+          <path d="M160,80 C180,60 220,60 240,80" stroke="rgba(184,134,11,.25)" stroke-width="1.5" fill="none"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.2)" letter-spacing="3">MITOLOGIA · MITOS · PODER</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">Os Grandes Mitos e Nomes da Deusa</h3>
+        <p class="cc-desc">A Descida ao Submundo, o Roubo dos Me, o Casamento Sagrado e a política daquela sociedade. O que cada mito revela sobre a natureza e o poder de Inanna.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ mitologia</span></div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-visual">
+        <svg class="cc-visual-bg" viewBox="0 0 400 267" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><radialGradient id="g4" cx="50%" cy="60%" r="70%"><stop offset="0%" stop-color="#112244"/><stop offset="55%" stop-color="#6B0F1A"/><stop offset="100%" stop-color="#2b2c29"/></radialGradient></defs>
+          <rect width="400" height="267" fill="url(#g4)"/>
+          <circle cx="200" cy="55" r="13" stroke="rgba(212,201,168,.2)" stroke-width="1" fill="none"/>
+          <circle cx="140" cy="105" r="9" stroke="rgba(212,201,168,.15)" stroke-width="1" fill="none"/>
+          <circle cx="260" cy="105" r="9" stroke="rgba(212,201,168,.15)" stroke-width="1" fill="none"/>
+          <circle cx="200" cy="155" r="11" stroke="rgba(184,134,11,.3)" stroke-width="1" fill="rgba(184,134,11,.05)"/>
+          <line x1="200" y1="68" x2="140" y2="96" stroke="rgba(212,201,168,.1)" stroke-width="0.8"/>
+          <line x1="200" y1="68" x2="260" y2="96" stroke="rgba(212,201,168,.1)" stroke-width="0.8"/>
+          <line x1="140" y1="114" x2="200" y2="144" stroke="rgba(212,201,168,.1)" stroke-width="0.8"/>
+          <line x1="260" y1="114" x2="200" y2="144" stroke="rgba(212,201,168,.1)" stroke-width="0.8"/>
+          <text x="200" y="22" text-anchor="middle" font-family="serif" font-size="9" fill="rgba(212,201,168,.2)" letter-spacing="3">PRÁTICA · DEVOÇÃO · NEOPAGANISMO</text>
+        </svg>
+      </div>
+      <div class="cc-corpo">
+        <h3 class="cc-titulo">Caminhos de Devoção do Neopaganismo Assírio</h3>
+        <p class="cc-desc">Para quem quer ir além: correspondências, oferendas, rituais e os princípios da feitiçaria suméria aplicados à prática contemporânea do neopaganismo do crescente fértil.</p>
+      </div>
+      <div class="cc-badge-wrap"><span class="cc-badge">✦ prática</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section style="background:var(--bege-claro);padding:60px 6vw;text-align:center;">
+  <div class="s-pill roxo" style="margin:0 auto 18px;">✦ Estrutura do curso</div>
+  <h2 class="conteudo-titulo" style="margin-bottom:16px;">Como você vai estudar</h2>
+  <p style="font-family:var(--fn-heavy);font-size:.88rem;color:rgba(43,44,41,.5);margin-bottom:48px;">2 dias · 8 módulos · do contexto histórico à prática de devoção</p>
+  <div class="mods" style="text-align:left;">
+
+    <div style="padding:12px 0 8px;"><p style="font-family:var(--fn-heavy);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dourado);text-align:left;">DIA 1 — O Mundo que a Criou</p></div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#0A1A3A 0%,#112244 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 01</p>
+        <h3 class="mod-h">Como nascem os Deuses</h3>
+        <p class="mod-p">Animismo, mitologia e teurgia nas primeiras sociedades. O panteão mesopotâmico: hierarquia, cosmologia e cosmogonia e o símbolo Dingir. Como se organizava a sociedade e o culto — templos, sacerdotes, sacerdotisas e a magia suméria.</p>
+        <span class="mod-badge">fundamentos</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#112244 0%,#1a3366 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 02</p>
+        <h3 class="mod-h">O Berço das Civilizações</h3>
+        <p class="mod-p">Mesopotâmia: território, povos e cronologia. Sumérios, acádios, assírios, babilônios, hititas, fenícios, persas, árabes e outros "vizinhos" — e como milênios de contato transmitiu culturas e interpretou mitos e cultos.</p>
+        <span class="mod-badge">contexto</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#1a3366 0%,#6B0F1A 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 03</p>
+        <h3 class="mod-h">Inanna antes de Ishtar</h3>
+        <p class="mod-p">Origem do nome e das primeiras aparições. Inanna suméria vs. Ishtar acádia: o que muda e o que permanece. Seus domínios: o céu, a terra, a guerra, o amor, a sexualidade, as travessias e o elo entre mundos.</p>
+        <span class="mod-badge">origem</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#6B0F1A 0%,#B8860B 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 04</p>
+        <h3 class="mod-h">Símbolos, Artefatos e Tecnologias Sagradas</h3>
+        <p class="mod-p">A Estrela de Oito Pontas e o planeta Vênus. Lápis-lazúli, cornalina e ouro — os materiais da deusa. Ingredientes, oferendas, selos cilíndricos, estátuas, talismãs, joias, roupas, templos, música e os poemas: A primeira escrita do mundo a serviço do sagrado.</p>
+        <span class="mod-badge">instrumentos</span>
+      </div>
+    </div>
+
+    <div style="padding:20px 0 8px;"><p style="font-family:var(--fn-heavy);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dourado);text-align:left;">DIA 2 — Seus Mitos e Seu Poder</p></div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#B8860B 0%,#6B0F1A 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 05</p>
+        <h3 class="mod-h">Os Grandes Mitos de Inanna</h3>
+        <p class="mod-p">O que cada mito e cada passagem sobre a vida da deusa revela sobre sua importância, natureza e poder.</p>
+        <span class="mod-badge">mitologia</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#6B0F1A 0%,#112244 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 06</p>
+        <h3 class="mod-h">O Feminino e o não-binarismo Político</h3>
+        <p class="mod-p">O papel do sacerdócio à Inanna: Sexualidade sagrada, papeis de gênero e o poder institucional. Como Inanna foi usada para legitimar domínios e sua gradual substituição pelo deus masculino.</p>
+        <span class="mod-badge">poder</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#112244 0%,#0A1A3A 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 07</p>
+        <h3 class="mod-h">Inanna nos Povos Vizinhos</h3>
+        <p class="mod-p">O impacto de Inanna atravessou milênios e permeou muitas culturas do mundo antigo. O que esses espelhamentos dizem sobre sua semiótica e onde termina sua influência histórica para começar a sincretização moderna.</p>
+        <span class="mod-badge">comparativo</span>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-capa" style="background:linear-gradient(135deg,#0A1A3A 0%,#B8860B 100%);"><div class="mod-circulo">✦</div></div>
+      <div class="mod-b">
+        <p class="mod-num">Parte 08</p>
+        <h3 class="mod-h">Caminhos de Devoção</h3>
+        <p class="mod-p">Para quem quer começar um devocional neopagão à Deusa: como trabalhar com Inanna hoje com base histórica e respeito à tradição. Correspondências, oferendas, calendário ritual e os princípios da feitiçaria suméria aplicados à prática contemporânea.</p>
+        <span class="mod-badge">prática</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- O QUE VOCÊ SAI SABENDO -->
+<section class="pratica" style="padding-bottom:60px;">
+  <div class="pratica-topo">
+    <div class="pratica-pill">✦ resultados</div>
+    <h2 class="pratica-titulo">O que você sai sabendo</h2>
+  </div>
+  <div style="padding:0 6vw;">
+  <div class="pratica-grade">
+
+    <div class="pratica-item">
+      <span class="pratica-num">01</span>
+      <h3 class="pratica-item-titulo">O passado do Oriente Médio <span>com profundidade</span></h3>
+      <p class="pratica-item-desc">Muitas pessoas gostam de abusar de saberes que supostamente nasceram na antiguidade para vender prestígio. Neste curso você terá acesso ao que é fato e o que é fake para reconhecer esses discursos vazios.</p>
+    </div>
+
+    <div class="pratica-item">
+      <span class="pratica-num">02</span>
+      <h3 class="pratica-item-titulo">A política por trás dos mitos <span>e o nascimento do patriarcado</span></h3>
+      <p class="pratica-item-desc">Os mitos de Inanna são também documentos políticos e psíquicos das sociedades mesopotâmicas. Você vai passar a ler mitos com olhos históricos e psicológicos ao mesmo tempo.</p>
+    </div>
+
+    <div class="pratica-item">
+      <span class="pratica-num">03</span>
+      <h3 class="pratica-item-titulo">Quem Inanna realmente foi <span>sem confundi-la com outras deusas</span></h3>
+      <p class="pratica-item-desc">Inanna não é sua irmã Ereshkigal, não é a Afrodite Grega e muito menos a Lilith medieval. Você vai entender as diferenças com precisão histórica e arqueológica.</p>
+    </div>
+
+    <div class="pratica-item">
+      <span class="pratica-num">04</span>
+      <h3 class="pratica-item-titulo">O que é a feitiçaria suméria <span>e o neopaganismo assírio</span></h3>
+      <p class="pratica-item-desc">A feitiçaria da antiga Mesopotâmia tinha liturgias complexas e deu origem a diversos conhecimentos mágicos. Você vai conhecer como se aproximar dela hoje com responsabilidade e fundamento.</p>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section style="position:relative;overflow:hidden;background:var(--preto);padding:80px 6vw;background-image:url('capa.png');background-size:cover;background-position:center top;">
+  <div style="position:absolute;inset:0;background:rgba(10,26,58,.9);pointer-events:none;z-index:1;"></div>
+  <div style="position:relative;z-index:2;">
+    <div style="display:flex;justify-content:center;margin-bottom:32px;">
+      <div class="s-pill prata">✦ para quem é</div>
+    </div>
+    <div class="pq-frases">
+      <p class="pq-menos" style="color:var(--prata);">Menos: "Inanna foi a primeira deusa mãe"</p>
+      <p class="pq-mais" style="color:#c0354a;">Mais: De onde Inanna veio, o que ela representou politicamente, como ela atravessou milênios de história e permeou diversas civilizações e quem ela ainda é hoje.</p>
+      <p class="pq-sub" style="font-size:clamp(1.1rem,1.5vw,1.3rem);">E você conhecendo conceitos e ferramentas para discursar sobre a influência dessa deusa na construção da história da humanidade e/ou para cultuá-la em tempos modernos.</p>
+    </div>
+    <div class="pq-tags-wrap">
+      <div class="pq-tag-item">para quem quer estudar mitologia</div>
+      <div class="pq-tag-item">para quem quer estudar história antiga</div>
+      <div class="pq-tag-item">para praticantes de bruxaria que sentem falta de embasamento tradicional</div>
+      <div class="pq-tag-item">para quem deseja cultuar uma deusa com fundamento arqueológico</div>
+      <div class="pq-tag-item">para iniciantes que querem começar por onde a história começa</div>
+      <div class="pq-tag-item">para quem fez o curso em 2023 e quer encontrar muito conteúdo novo</div>
+      <div class="pq-tag-item">para pesquisadores do "sagrado feminino"</div>
+      <div class="pq-tag-item">para terapeutas que trabalham com a semiótica dos mitos</div>
+      <div class="pq-tag-item">para quem está cansado de espiritualidade baseado em vozes da cabeça</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+      <a href="https://pay.hotmart.com/U106014826K?checkoutMode=10" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--azul),var(--roxo-claro));color:#fff;font-family:var(--fn-heavy);font-weight:900;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(10,26,58,.4);">Garantir Ingresso</a>
+      <a href="https://pay.hotmart.com/L106085240Y" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:rgba(107,15,26,.35);border:1px solid rgba(155,32,48,.5);color:rgba(212,201,168,.85);font-family:var(--fn-heavy);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border-radius:100px;text-decoration:none;">Quero só a gravação</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section style="background:var(--bege-claro);padding:60px 6vw;">
+  <div style="display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:48px;">
+    <div style="flex:1;height:1px;background:rgba(43,44,41,.12);"></div>
+    <div class="s-pill roxo">✦ depoimentos</div>
+    <div style="flex:1;height:1px;background:rgba(43,44,41,.12);"></div>
+  </div>
+  <h2 style="font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--preto);text-align:center;margin-bottom:48px;font-weight:700;">O que os alunos estão dizendo</h2>
+
+  <div id="dep-scroll">
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Esse curso me fez entender que uma força não precisa ser ancestral para ser legítima. Percebo o quanto ficava querendo encontrar provas para esse discurso por uma falta de confiança no meu próprio trabalho e agora me sinto muito empoderada porque conheço a verdadeira história."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0A1A3A,#6B0F1A);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Renata Santos</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Curso maravilhoso, estou pasma de tanta informação — que por sinal fez refletir meu culto para as deusas escuras. Extraordinário."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6B0F1A,#B8860B);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Fernanda Simão</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Gente, vocês não sabem como é maravilhoso ficar assistindo e reassistindo esse curso. Parece que sempre que assisto de novo percebo um detalhe que não havia percebido antes."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#B8860B,#0A1A3A);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Aracne Tarot</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Devorei as aulas em uma tacada só. Sempre sentia falta de um conteúdo mais histórico — e saí felicíssima de como minha mente se abriu. Como uma mulher latina dentro de um contexto de imigração, minha cabeça fez boom. Obrigada Amanda."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0A1A3A,#B8860B);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Andrea Ramires</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Fui buscar as referências de Madalena como sacerdotisa de Ísis, não encontrei nada e aí a ficha começou a cair. O que fizeram com tantas deusas é muito parecido — deusas de culturas diferentes unificadas em uma espiritualidade new age sem fontes."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6B0F1A,#0A1A3A);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Lara Falcão</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Meu culto melhorou 100% depois dos seus cursos. Está muito mais embasado e direcionado. Fico muito triste quando, nesse meio, tanto se desdenha das ciências humanas."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#B8860B,#6B0F1A);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Andrea Ramires</p></div>
+    </div>
+    <div style="min-width:285px;max-width:305px;flex-shrink:0;scroll-snap-align:start;background:#fff;border:1px solid rgba(43,44,41,.07);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.9rem;color:rgba(43,44,41,.8);line-height:1.7;margin-bottom:24px;">"Eu faço culto à Inanna há algum tempo e fiz o curso nesse caminho. Digo que meu olhar sobre ela mudou completamente depois das suas aulas. Acho maravilhoso cultuar uma divindade com tanta profundidade histórica."</p>
+      <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0A1A3A,#6B0F1A);flex-shrink:0;"></div><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.85rem;color:var(--preto);">Andrea Ramires</p></div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;">
+    <div id="dot-0" style="width:28px;height:6px;border-radius:100px;background:var(--dourado);transition:all .3s;"></div>
+    <div id="dot-1" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-2" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-3" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-4" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-5" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+    <div id="dot-6" style="width:6px;height:6px;border-radius:50%;background:rgba(43,44,41,.2);transition:all .3s;"></div>
+  </div>
+</section>
+<script>
+  const ds=document.getElementById('dep-scroll');
+  let isDown=false,startX,scrollLeft;
+  ds.addEventListener('mousedown',e=>{isDown=true;ds.style.cursor='grabbing';startX=e.pageX-ds.offsetLeft;scrollLeft=ds.scrollLeft;});
+  ds.addEventListener('mouseleave',()=>{isDown=false;ds.style.cursor='grab';});
+  ds.addEventListener('mouseup',()=>{isDown=false;ds.style.cursor='grab';});
+  ds.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();ds.scrollLeft=scrollLeft-(e.pageX-ds.offsetLeft-startX)*1.2;});
+  ds.addEventListener('scroll',()=>{
+    const w=ds.scrollWidth-ds.clientWidth;const idx=Math.round((ds.scrollLeft/w)*6);
+    [0,1,2,3,4,5,6].forEach(i=>{const d=document.getElementById('dot-'+i);if(!d)return;d.style.width=i===idx?'28px':'6px';d.style.borderRadius=i===idx?'100px':'50%';d.style.background=i===idx?'var(--dourado)':'rgba(43,44,41,.2)';});
+  });
+</script>
+
+<!-- PROVA SOCIAL -->
+<section style="background:linear-gradient(135deg,#0A1A3A 0%,#112244 55%,#6B0F1A 100%);padding:80px 6vw;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.03;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');pointer-events:none;"></div>
+  <div style="position:relative;z-index:2;">
+    <p style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(3.5rem,7vw,5.5rem);color:var(--prata);line-height:1;letter-spacing:-.03em;margin-bottom:16px;">1.000+</p>
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:clamp(.95rem,2.5vw,1.4rem);color:rgba(212,201,168,.85);margin-bottom:12px;">alunos ao redor do mundo já passaram pela Escola Travessias</p>
+    <p style="font-family:var(--fn-heavy);font-weight:300;font-size:clamp(.82rem,2vw,1.1rem);color:rgba(212,201,168,.45);margin-bottom:40px;padding:0 4vw;">Uma comunidade de navegantes que buscam espiritualidade com profundidade, responsabilidade social, autonomia e autenticidade.</p>
+    <div class="prova-metricas" style="display:flex;justify-content:center;gap:60px;flex-wrap:wrap;max-width:100%;overflow:hidden;">
+      <div style="min-width:80px;text-align:center;">
+        <p class="prova-num" style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.8rem,6vw,3rem);color:var(--prata);line-height:1;margin-bottom:8px;">6</p>
+        <p class="prova-lbl" style="font-family:var(--fn-heavy);font-size:clamp(.5rem,.8vw,.65rem);letter-spacing:.15em;text-transform:uppercase;color:rgba(212,201,168,.5);line-height:1.4;">cursos na<br>plataforma</p>
+      </div>
+      <div style="min-width:80px;text-align:center;">
+        <p class="prova-num" style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.8rem,6vw,3rem);color:var(--prata);line-height:1;margin-bottom:8px;">8 anos</p>
+        <p class="prova-lbl" style="font-family:var(--fn-heavy);font-size:clamp(.5rem,.8vw,.65rem);letter-spacing:.15em;text-transform:uppercase;color:rgba(212,201,168,.5);line-height:1.4;">de pesquisa<br>e prática</p>
+      </div>
+      <div style="min-width:80px;text-align:center;">
+        <p class="prova-num" style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1.8rem,6vw,3rem);color:var(--prata);line-height:1;margin-bottom:8px;">98%</p>
+        <p class="prova-lbl" style="font-family:var(--fn-heavy);font-size:clamp(.5rem,.8vw,.65rem);letter-spacing:.15em;text-transform:uppercase;color:rgba(212,201,168,.5);line-height:1.4;">recomendam</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICADO -->
+<section style="background:var(--bege-claro);padding:80px 6vw;overflow:hidden;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:48px;flex-wrap:wrap;gap:8px;">
+    <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.2em;color:rgba(43,44,41,.25);text-transform:uppercase;">[ A.T · CERT — 001 ] ———————</p>
+    <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.2em;color:rgba(43,44,41,.25);text-transform:uppercase;">ESCOLA TRAVESSIAS · 2025</p>
+  </div>
+  <div class="cert-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <h2 style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2rem,3.5vw,3rem);color:var(--preto);line-height:1.1;letter-spacing:-.02em;margin-bottom:24px;">
+        Você sai com um <span style="color:var(--dourado);text-decoration:underline;text-underline-offset:6px;">certificado</span> de conclusão
+      </h2>
+      <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dourado);margin-bottom:16px;">Escola Travessias · Certificação</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.95rem;color:rgba(43,44,41,.65);line-height:1.75;">Ao concluir o curso, você recebe um certificado oficial da Escola Travessias — reconhecimento pelo seu aprendizado e dedicação ao longo dos 2 dias de conteúdo.</p>
+    </div>
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.15);max-width:420px;margin:0 auto;">
+      <img src="certificado.png" alt="Certificado Escola Travessias" style="width:100%;height:auto;display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bege-claro);padding:80px 6vw;border-top:1px solid rgba(43,44,41,.06);">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:24px;">
+      <div style="flex:1;height:1px;background:rgba(43,44,41,.1);"></div>
+      <div class="s-pill roxo">✦ dúvidas</div>
+      <div style="flex:1;height:1px;background:rgba(43,44,41,.1);"></div>
+    </div>
+    <h2 style="font-family:var(--fn-serif);font-style:italic;font-size:2.3rem;color:var(--preto);text-align:center;margin-bottom:52px;font-weight:700;">Perguntas frequentes</h2>
+    <div class="faq-layout" style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;">
+      <div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Vou receber a gravação se não puder assistir ao vivo?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Caso você queira as aulas gravadas e as aulas ao vivo você pode comprar o acesso combinado dentro do próprio checkout, clicando em "Garantir Ingresso". Mas caso você queira comprar apenas as aulas gravadas você pode clicar em "Quero apenas a gravação". Em até 15 dias úteis após as aulas ao vivo a gravação será disponibilizada dentro da plataforma.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Qual é a vantagem de assistir às aulas ao vivo?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">A opção de assistir apenas às lives é mais em conta e caso você queira as duas experiências, durante as lives você pode interagir com a facilitadora e fazer suas perguntas diretamente para ela.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>O e-book está incluso?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">O e-book é parte do produto para quem comprar também as aulas gravadas — ao comprar o curso completo, você recebe o e-book junto com o acesso às aulas. Uma só compra, tudo incluso.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Preciso ter experiência prévia com paganismo ou com Inanna?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Não. O curso foi construído para iniciantes e praticantes. Partimos do zero — da origem histórica e mitológica das primeiras civilizações — e avançamos até a prática ancestral e contemporânea. Assim quem já conhece pode encontrar camadas novas e quem está chegando agora vai sair com uma base sólida.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>Já fiz o curso em 2023. Vale a pena refazer?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Sim. Esta é uma edição significativamente atualizada, com conteúdo novo em todos os módulos. Quem fez a versão anterior vai encontrar aprofundamentos, novos recortes históricos e uma estrutura mais completa — especialmente nos módulos sobre política, sacerdócio e feitiçaria suméria.</div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-btn" onclick="toggleFaq2(this)"><span>E se eu não gostar do material?</span><span class="faq2-seta">↓</span></button>
+          <div class="faq2-resp">Você tem 7 dias de garantia incondicional. Se por qualquer razão não for o que esperava, basta solicitar o reembolso integral dentro do prazo.</div>
+        </div>
+      </div>
+      <div class="faq-card-contato" style="background:#fff;border:1px solid rgba(43,44,41,.08);border-radius:20px;padding:28px;position:sticky;top:100px;width:240px;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;">
+        <div style="width:44px;height:44px;background:#25D366;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.049-1.107l-.29-.173-2.955.838.838-2.955-.174-.29A7.946 7.946 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        </div>
+        <h3 style="font-family:var(--fn-heavy);font-weight:700;font-size:.95rem;color:var(--preto);line-height:1.3;margin-bottom:8px;">Ainda ficou com alguma dúvida?</h3>
+        <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.78rem;color:rgba(43,44,41,.5);line-height:1.5;margin-bottom:16px;">Se ainda estiver com dúvidas, nossa equipe está à disposição.</p>
+        <a href="https://wa.me/message/EU4VCDBX7WORH1" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--dourado),var(--roxo-claro));color:#fff;font-family:var(--fn-heavy);font-weight:700;font-size:.82rem;letter-spacing:.05em;padding:14px 24px;border-radius:100px;text-decoration:none;">✦ Fale conosco</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL / PREÇO -->
+<section style="background:linear-gradient(160deg,#0A1A3A 0%,#112244 55%,#6B0F1A 100%);padding:80px 6vw;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.03;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');pointer-events:none;"></div>
+  <div style="position:relative;z-index:2;max-width:720px;margin:0 auto;">
+    <h2 style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--prata);line-height:1;letter-spacing:-.02em;margin-bottom:16px;">Garanta sua vaga</h2>
+    <!-- preço riscado -->
+    <p style="font-family:var(--fn-heavy);font-size:1rem;color:rgba(212,201,168,.35);text-decoration:line-through;margin-bottom:8px;">R$ 244,00</p>
+    <!-- valor grande = parcela -->
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin-bottom:10px;">
+      <span style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(1rem,2vw,1.3rem);color:rgba(212,201,168,.6);line-height:1;">12x de</span>
+      <span style="font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(2.8rem,6vw,4.5rem);color:var(--prata-claro);line-height:1;">R$ 10,14</span>
+    </div>
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.82rem;color:rgba(212,201,168,.4);margin-bottom:40px;">ou R$ 104,40 à vista</p>
+
+    <!-- TICKET RESUMIDO -->
+    <div style="background:#fff;border-radius:20px;padding:28px 32px;margin-bottom:24px;text-align:left;position:relative;overflow:hidden;max-width:560px;margin-left:auto;margin-right:auto;box-shadow:0 12px 40px rgba(0,0,0,.25);">
+      <div style="position:absolute;top:0;right:0;background:#0A1A3A;color:rgba(212,201,168,.7);padding:14px 18px;border-bottom-left-radius:16px;font-family:var(--fn-heavy);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;line-height:1.5;text-align:center;">CURSO<br><span style="font-size:1.1rem;font-weight:900;color:#fff;">✦</span></div>
+      <p style="font-family:var(--fn-heavy);font-weight:900;font-size:1.1rem;color:var(--preto);margin-bottom:4px;padding-right:80px;">INANNA, RAINHA DO CÉU E DA TERRA</p>
+      <p style="font-family:var(--fn-heavy);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:20px;">ESCOLA TRAVESSIAS · AMANDA AVALON</p>
+      <div style="height:1px;background:rgba(43,44,41,.08);margin-bottom:20px;"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;">
+        <div><p style="font-family:var(--fn-heavy);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">FORMATO</p><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.8rem;color:var(--preto);">Ao Vivo</p></div>
+        <div><p style="font-family:var(--fn-heavy);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">ACESSO</p><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.8rem;color:var(--preto);">100% Online</p></div>
+        <div><p style="font-family:var(--fn-heavy);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">DATA</p><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.8rem;color:var(--preto);">27 & 28 Jun</p></div>
+        <div><p style="font-family:var(--fn-heavy);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(43,44,41,.35);margin-bottom:5px;">HORA</p><p style="font-family:var(--fn-heavy);font-weight:700;font-size:.8rem;color:var(--preto);">8am às 12pm</p></div>
+      </div>
+    </div>
+
+    <!-- BOTÃO -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <a href="https://pay.hotmart.com/U106014826K?checkoutMode=10" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--azul),var(--roxo-claro));color:#fff;font-family:var(--fn-heavy);font-weight:900;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(10,26,58,.4);">Garantir Ingresso</a>
+      <a href="https://pay.hotmart.com/L106085240Y" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:rgba(107,15,26,.35);border:1px solid rgba(155,32,48,.5);color:rgba(212,201,168,.85);font-family:var(--fn-heavy);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border-radius:100px;text-decoration:none;">Quero só a gravação</a>
+    </div>
+
+    <!-- O QUE ESTÁ INCLUSO -->
+    <div style="background:rgba(212,201,168,.07);border:1px solid rgba(212,201,168,.15);border-radius:16px;padding:28px 32px;margin:24px auto;text-align:left;max-width:560px;">
+      <p style="font-family:var(--fn-heavy);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dourado);margin-bottom:20px;">O que está incluso</p>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--dourado);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(212,201,168,.9);">2 dias de aula ao vivo</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--dourado);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(212,201,168,.9);">Acesso às gravações opcional</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--dourado);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(212,201,168,.9);">E-Book completo opcional</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--dourado);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(212,201,168,.9);">8 módulos — do contexto histórico à prática de devoção</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--dourado);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(212,201,168,.9);">Acervo bibliográfico com referências acadêmicas</p></div>
+        <div style="display:flex;align-items:center;gap:14px;"><span style="width:28px;height:28px;min-width:28px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--dourado);flex-shrink:0;">✓</span><p style="font-family:var(--fn-heavy);font-weight:400;font-size:1rem;color:rgba(212,201,168,.9);">Acesso imediato ao material após a compra</p></div>
+      </div>
+    </div>
+
+    
+
+    <p style="font-family:var(--fn-heavy);font-weight:400;font-size:.82rem;color:rgba(212,201,168,.4);margin-bottom:14px;">Ficou com alguma dúvida? Fale com a gente pelo WhatsApp.</p>
+    <a href="https://wa.me/message/EU4VCDBX7WORH1" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--preto);font-family:var(--fn-heavy);font-weight:700;font-size:.82rem;padding:14px 28px;border-radius:100px;text-decoration:none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.049-1.107l-.29-.173-2.955.838.838-2.955-.174-.29A7.946 7.946 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+      Falar pelo WhatsApp
+    </a>
+    <p style="font-family:var(--fn-heavy);font-size:.9rem;letter-spacing:.04em;color:var(--prata-escuro);margin-top:28px;line-height:1.5;">✦ ✦ ✦<br>Garantia incondicional de 7 dias.<br>Se não gostar, devolvemos 100% do seu investimento — sem perguntas.<br>✦ ✦ ✦</p>
+  </div>
+</section>
+
+<!-- FACILITADORA -->
+<section style="background:var(--bege-claro);padding:80px 6vw;border-top:1px solid rgba(43,44,41,.06);">
+  <div style="display:flex;justify-content:center;margin-bottom:20px;"><div class="s-pill roxo">✦ facilitadora</div></div>
+  <h2 style="font-family:var(--fn-serif);font-style:italic;font-weight:700;font-size:2.3rem;color:var(--preto);text-align:center;margin-bottom:56px;">Quem sou eu para te guiar?</h2>
+  <div class="fac-grid" style="display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start;max-width:960px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div class="fac-foto" style="width:280px;height:340px;border-radius:20px;overflow:hidden;position:relative;">
+        <img class="fac-foto-img" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;" src="foto.jpg" alt="Amanda Avalon">
+      </div>
+      <p style="font-family:var(--fn-heavy);font-weight:700;font-size:1.4rem;color:var(--preto);text-align:center;">Amanda Avalon</p>
+      <p style="font-family:var(--fn-heavy);font-size:.65rem;color:rgba(43,44,41,.4);text-align:center;letter-spacing:.05em;">Pesquisadora · Terapeuta Transpessoal · Taróloga · Professora de Neopaganismo</p>
+    </div>
+    <div>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;margin-bottom:16px;">Olá Navegante, me chamo Amanda Avalon. Sou Arquiteta Urbanista especialista em território, permacultura e agrofloresta desde 2016. Também sou pós-graduada em Psicologia e Terapia Integrativa e estou cursando pós-graduação em Mitologia Comparada.</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;margin-bottom:16px;">Sempre fui movida pela relação ancestral entre o ser humano e o sagrado e por isso pesquiso, estudo e pratico paganismo desde os 7 anos de idade, e desde 2018 produzo conteúdo sobre Corpo-Território e Sagrado nas redes sociais.</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;margin-bottom:16px;">Atuo como Terapeuta Transpessoal, Taróloga, Professora de Neopaganismo e como Comunicadora.</p>
+      <p style="font-family:var(--fn-heavy);font-weight:400;font-size:14px;color:rgba(43,44,41,.8);line-height:1.8;">Meu trabalho reúne espiritualidade, saúde integrativa e consciência sistêmica, com o propósito de apoiar na instrução e no cuidado de pessoas que buscam construir mais sentido para as suas vidas. O meu objetivo é traduzir conhecimentos ocultos de forma séria e acessível, sem cair na armadilha da apropriação cultural, com o intuito de mostrar como o autodesenvolvimento através da espiritualidade pode impulsionar a vida comum, integrando cotidiano e subjetividade para resgatar autonomia, autenticidade e algum equilíbrio nesse mundo em colapso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO FINAL -->
+<section style="background:var(--preto);padding:100px 6vw;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,26,58,.5) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:28px;left:0;right:0;overflow:hidden;white-space:nowrap;opacity:.07;">
+    <span style="font-family:var(--fn-heavy);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--prata);animation:marquee 18s linear infinite;display:inline-block;">✦ INANNA — RAINHA DO CÉU E DA TERRA &nbsp;&nbsp;&nbsp; ✦ ESCOLA TRAVESSIAS &nbsp;&nbsp;&nbsp; ✦ AMANDA AVALON &nbsp;&nbsp;&nbsp; ✦ INANNA — RAINHA DO CÉU E DA TERRA &nbsp;&nbsp;&nbsp; ✦ ESCOLA TRAVESSIAS &nbsp;&nbsp;&nbsp; ✦ AMANDA AVALON &nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div style="position:absolute;bottom:28px;left:0;right:0;overflow:hidden;white-space:nowrap;opacity:.07;">
+    <span style="font-family:var(--fn-heavy);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--prata);animation:marquee 22s linear infinite reverse;display:inline-block;">✦ MITOLOGIA COMPARADA &nbsp;&nbsp;&nbsp; ✦ HISTÓRIA ANTIGA &nbsp;&nbsp;&nbsp; ✦ NEOPAGANISMO ASSÍRIO &nbsp;&nbsp;&nbsp; ✦ MITOLOGIA COMPARADA &nbsp;&nbsp;&nbsp; ✦ HISTÓRIA ANTIGA &nbsp;&nbsp;&nbsp; ✦ NEOPAGANISMO ASSÍRIO &nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div style="position:relative;z-index:2;">
+    <p style="font-family:var(--fn-heavy);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(212,201,168,.25);margin-bottom:24px;">Escola Travessias · Amanda Avalon</p>
+    <h2 style="font-family:var(--fn-heavy);font-weight:900;font-size:clamp(2.8rem,6vw,5.5rem);color:var(--prata);line-height:1;letter-spacing:-.02em;margin-bottom:48px;">Quer conhecer a<br>verdadeira Inanna?</h2>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="https://pay.hotmart.com/U106014826K?checkoutMode=10" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--azul),var(--roxo-claro));color:#fff;font-family:var(--fn-heavy);font-weight:900;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;padding:18px 40px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(10,26,58,.4);">Garantir meu ingresso</a>
+      <a href="https://pay.hotmart.com/L106085240Y" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;background:rgba(107,15,26,.35);border:1px solid rgba(155,32,48,.5);color:rgba(212,201,168,.85);font-family:var(--fn-heavy);font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;padding:18px 36px;border-radius:100px;text-decoration:none;">Quero só a gravação</a>
+      <a href="https://wa.me/message/EU4VCDBX7WORH1" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:rgba(212,201,168,.08);border:1px solid rgba(212,201,168,.12);color:rgba(212,201,168,.7);font-family:var(--fn-heavy);font-weight:500;font-size:.88rem;padding:18px 36px;border-radius:100px;text-decoration:none;">Falar com o time</a>
+    </div>
+    <p style="font-family:var(--fn-heavy);font-size:.65rem;letter-spacing:.1em;color:rgba(212,201,168,.18);text-transform:uppercase;margin-top:48px;">© 2025 Escola Travessias · Amanda Avalon · Todos os direitos reservados</p>
+  </div>
+</section>
+
+<script>function toggleFaq2(btn){btn.classList.toggle('open');}</script>
+</body>
+</html>
